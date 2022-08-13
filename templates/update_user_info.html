@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Update Users</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/dashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/add_menu">Menu</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/users">Users</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/reservations">Reservations</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+
+    <h3 class="text-center mt-3 mb-0 pb-0">Update User's Information</h3>
+    <div class="card w-50 mx-auto">
+      <div class="card-header p-0 text-center">
+        <img src="{{url_for('static', filename='images/food1.jpeg')}}" align="middle" class="w-100"/>
+      </div>
+      <div class="card-body">
+        <form action="/update_user_info/{{users.id}}" method="post">
+          First Name <input type="text" name ="fname" id="" class="form-control mb-2" value="{{users.first_name}}">
+          Last Name <input type="text" name ="lname" id="" class="form-control mb-2" value="{{users.last_name}}">
+          Email <input type="text" name ="email" id="" class="form-control mb-2" value="{{users.email}}">
+          Birth date <input type="date" name ="birthdate" id="" class="form-control mb-3" value="{{users.birth_date}}">
+          
+          <input type="submit" name="update_user_info" class="btn btn-primary w-100" value="Update User Information">
+        </form>
+      </div>
+      <!-- <div class="card-footer text-center">
+        To go back to users page click <a href="/users">here</a>.
+      </div> -->
+    </div>
+  </div>
+{% endblock %}

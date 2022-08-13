@@ -1,0 +1,120 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Login</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="">Menu</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="#">Contact</a>
+        <a class="py-2 text-dark text-decoration-none" href="/account">Create Account</a>
+      </nav>
+    </div>
+
+    <div class="p-4 p-md-5 mb-4 text-white" style="height: 300px;
+    background-image: url(/static/images/slogan.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;">
+      <div class="col-md-6 px-0" style="text-shadow: 3px 3px 5px #312a26;">
+        <h2 class="display-4 fst-italic">Eating is always a good idea</h2>
+        <p class="lead my-3">We serve high quality, simple product, prepare it in a clean and sparkling environment, and serve it in a warm and friendly manner.</p>
+      </div>
+    </div>
+
+    <h3 class="text-center mt-3 mb-0 pb-0">Login Form</h3>
+    <div class="card w-50 mx-auto">
+      <div class="card-header p-0 text-center">
+        <img src="{{url_for('static', filename='images/food1.jpeg')}}" align="middle" class="w-100"/>
+      </div>
+      <div class="card-body">
+        <form action="" method="post">
+          User Name<input type="text" name ="username" id="" class="form-control mb-2" placeholder="User Name">
+          Password<input type="password" name ="password" id="" class="form-control mb-3" placeholder="Password">
+
+          <input type="submit" name="login" class="btn w-100 btn-primary" value="Login">
+        </form>
+      </div>
+      <div class="card-footer text-center">
+        To create a new account click <a href="/account">here</a>.
+      </div>
+    </div>
+
+    <footer class="mt-5 px-3 pt-3 border-top bg-light">
+      <div class="row">
+        <!-- ml, mr doesnt work -->
+        <div class="col-6 col-md ml-5">
+          <h4 class="text-end">Opening Hours</h4>
+          <table align="right" style="display: inline-block; text-align: right;">
+            <tr>
+              <th>Day</th>
+              <th>..........</th>
+              <th>Availability</th>
+            </tr>
+            <tr>
+              <td>Monday</td>
+              <td>..........</td>
+              <td>Closed</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>..........</td>
+              <td>09:00-22:00</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>..........</td>
+              <td>Closed</td>
+            </tr>
+            <tr>
+              <td>Thursday</td>
+              <td>..........</td>
+              <td>09:00-22:00</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>..........</td>
+              <td>09:00-22:00</td>
+            </tr>
+            <tr>
+              <td>Satuaday</td>
+              <td>..........</td>
+              <td>09:00-22:00</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>..........</td>
+              <td>09:00-22:00</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- <div class="col-6 col-md mr-0 border-left">
+          <h4>Opening Hours</h4>
+          <p>Lunch      ...... 11:00-15:00</p>
+          <p>Dinner     ...... 17:30-22:00</p>
+          <p>Wednesday  ...... Closed</p>
+        </div> -->
+
+        <div class="col-6 col-md my-0 py-0">
+          <h4>Py Restaurant</h4>
+          <p class="my-0">1234 IT Street</p>
+          <p class="my-0">Cebu City</p>
+          <p class="my-0">1-123-456-789</p>
+          <p class="my-0">info@pyrestaurant.com</p>
+        </div>
+      </div>
+      <div class="text-muted text-center text-small">
+        <p>&copy; 2022 | Kredo IT Abroad</p>
+      </div>
+    </footer>
+  </div>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Reservation</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/userdashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="reservation">Reservation</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/account">Create Account</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+
+    <h3 class="text-center mt-3 mb-0 pb-0">Reservation Form</h3>
+    <div class="card w-50 mx-auto">
+      <div class="card-header p-0 text-center">
+        <img src="{{url_for('static', filename='images/food1.jpeg')}}" align="middle" class="w-100"/>
+      </div>
+      <div class="card-body">
+        <form action="/reservation" method="post">
+          Reservation Date <input type="date" name="res_date" id="" class="form-control mb-2" placeholder="Reservation Date">
+          Reservation Time New <br>
+          <select name="res_time" id="" class="form-control mb-2" required>
+            <option value="" hidden>select time</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="14:30">14:30</option>
+            <option value="15:00">15:00</option>
+            <option value="15:30">15:30</option>
+            <option value="16:00">16:00</option>
+            <option value="16:30">16:30</option>
+            <option value="17:00">17:00</option>
+            <option value="17:30">17:30</option>
+            <option value="18:00">18:00</option>
+            <option value="18:30">18:30</option>
+            <option value="19:00">19:00</option>
+            <option value="19:30">19:30</option>
+            <option value="20:00">20:00</option>
+            <option value="20:30">20:30</option>
+            <option value="21:00">21:00</option>
+          </select>
+          
+          How Many Guests <br>
+          <input type="radio" name ="num_guest" id="1" value="1">
+          <label for="1" class="me-2">1</label>
+          <input type="radio" name ="num_guest" id="2" value="2">
+          <label for="2" class="me-2">2</label>
+          <input type="radio" name ="num_guest" id="3" value="3">
+          <label for="3" class="me-2">3</label>
+          <input type="radio" name ="num_guest" id="4" value="4">
+          <label for="4" class="me-2">4</label>
+          <input type="radio" name ="num_guest" id="5" value="5">
+          <label for="5" class="me-2">5</label>
+          <input type="radio" name ="num_guest" id="6" value="6">
+          <label for="6" class="me-2">6</label>
+
+          <input type="submit" name="reservation" class="btn w-100 btn-primary mt-3" value="Reservation">
+        </form>
+      </div>
+    </div>
+
+    <h3 class="text-center mt-5 mb-0 pb-0">History Of Reservations</h3>
+    <table class="table table-striped table-bordered w-100 text-center">
+      <tr>
+        <th class="table-danger">Reservation ID #</th>
+        <th class="table-danger">Date</th>
+        <th class="table-danger">Time</th>
+        <th class="table-danger">Guest</th>
+        <th colspan="2" class="table-danger">Action</th>
+
+        {% for r in reservations %}
+          <tr>
+            <td>{{r.id}}</td>
+            <td>{{r.res_date}}</td>
+            <td>{{r.res_time}}</td>
+            <td>{{r.num_guest}}</td>
+            <td><a href="/update_reservation/{{r.id}}">Update</a></td>
+            <td><a href="/delete_reservation/{{r.id}}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+{% endblock %}

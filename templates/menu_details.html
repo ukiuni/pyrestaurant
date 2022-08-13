@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Menu Details</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/dashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/add_menu">Menu</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/users">Users</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/reservations">Reservations</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+
+    <h3 class="text-center mt-3 mb-0 pb-0">Menu Details</h3>
+    <div class="card mx-auto mb-3" style="width: 350px;">
+      <div class="card-header p-0" style="height: 350px;">
+        <img src="/static/images/{{selected_menu.menu_pic}}" class="w-100 h-100" align="middle">
+      </div>
+      <div class="card-body text-center">
+        Menu : {{selected_menu.menu_name}} <br>
+        Price : {{ "$%.2f"|format(selected_menu.menu_price) }}
+      </div>
+    </div>
+
+    <table class="table table-striped table-bordered w-100 text-center">
+      <tr>
+        <th class="table-danger">No#</th>
+        <th class="table-danger">Order ID#</th>
+        <th class="table-danger">Date</th>
+        <th class="table-danger">Time</th>
+        <th class="table-danger">Guest</th>
+
+        {% for o in orders %}  
+        <!-- use range / range length? -->
+          <tr>
+            <!-- how can i apply the ordinal numbers -->
+            <td>{{0}}</td>
+            <td>{{o.id}}</td>
+            <td>{{o.res_date}}</td>
+            <td>{{o.res_time}}</td>
+            <td>{{o.num_guest}}</td>
+          </tr>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+{% endblock %}

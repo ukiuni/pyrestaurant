@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Categories</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/dashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/add_menu">Menu</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/users">Users</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/reservations">Reservations</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+    
+    <h3 class="text-center mt-3 mb-0 pb-0">Add Categories</h3>
+    <div class="card w-50 mx-auto">
+      <div class="card-header p-0 text-center">
+        <img src="{{url_for('static', filename='images/food1.jpeg')}}" align="middle" class="w-100"/>
+      </div>
+      <div class="card-body">
+        <form action="/categories" method="post">
+          Category Name<input type="text" name="category_name" id="" class="form-control mb-3" placeholder="Category Name">
+
+          <input type="submit" name="register" class="btn w-100 btn-primary" value="Resister">
+        </form>
+      </div>
+    </div>
+
+    <h3 class="text-center mt-5 mb-0 pb-0">All Categories</h3>
+    <table class="table table-striped table-bordered w-100 text-center">
+      <tr>
+        <th class="table-danger">Category ID #</th>
+        <th class="table-danger">Category Name</th>
+        <th colspan="2" class="table-danger">Action</th>
+
+        {% for c in categories %}
+          <tr>
+            <td>{{c.id}}</td>
+            <td>{{c.category_name}}</td>
+            <td><a href="/update_category/{{c.id}}">Update</a></td>
+            <td><a href="/delete_category/{{c.id}}">Delete</a></td>
+          </tr>
+        {% endfor %}
+      </tr>
+    </table>
+  </div>
+{% endblock %}

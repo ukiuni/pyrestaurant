@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Update Reservation</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/userdashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="reservation">Reservation</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/account">Create Account</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+
+    <h3 class="text-center mt-3 mb-0 pb-0">Update Reservarion</h3>
+    <div class="card w-50 mx-auto">
+      <div class="card-header p-0 text-center">
+        <img src="{{url_for('static', filename='images/food1.jpeg')}}" align="middle" class="w-100"/>
+      </div>
+      <div class="card-body">
+        <form action="/update_reservation/{{reservations.id}}" method="post">
+          Reservation Date <input type="date" name ="res_date" id="" class="form-control mb-2" value="{{reservations.res_date}}">
+          Time <input type="text" name ="res_time" id="" class="form-control mb-2" value="{{reservations.res_time}}">
+          Number Of Guest <br>
+          <input type="radio" name ="num_guest" id="1" value="1">
+          <label for="1" class="me-2">1</label>
+          <input type="radio" name ="num_guest" id="2" value="2">
+          <label for="2" class="me-2">2</label>
+          <input type="radio" name ="num_guest" id="3" value="3">
+          <label for="3" class="me-2">3</label>
+          <input type="radio" name ="num_guest" id="4" value="4">
+          <label for="4" class="me-2">4</label>
+          <input type="radio" name ="num_guest" id="5" value="5">
+          <label for="5" class="me-2">5</label>
+          <input type="radio" name ="num_guest" id="6" value="6">
+          <label for="5" class="me-2">6</label>
+          <br>
+          <input type="submit" name="update_reservation" class="btn btn-primary w-100 mt-3" value="Update Reservation">
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

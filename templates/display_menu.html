@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Display Menu</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/userdashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="reservation">Reservation</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/account">Create Account</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+
+    <h2 class="text-center mt-3 mb-2 pb-0">[{{category.category_name}}]</h2>
+    <table class="table border-top w-75 mx-auto text-center">
+      {% for m in menus %}
+        <tr>
+          <td style="width: 150px; height: 150px;"><img src="/static/images/{{m.menu_pic}}" class="w-100 h-100"></td>
+          <td>{{m.menu_name}} <br> {{ "$%.2f"|format(m.menu_price) }}</td>
+          <td><a href="/order/{{m.id}}" class="btn w-100 btn-primary mt-3">Order</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}

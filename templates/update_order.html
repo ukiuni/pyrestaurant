@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Update Order</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/userdashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="reservation">Reservation</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/account">Create Account</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+
+    <h3 class="text-center mt-3 mb-0 pb-0">Update Order Date</h3>
+    <div class="card w-50 mx-auto">
+      <div class="card-header p-0 text-center">
+        <img src="/static/images/{{menu.menu_pic}}" align="middle" class="w-100"/>
+      </div>
+      <div class="card-body">
+        order id : {{selected_order.id}} <br>
+        menu id : {{selected_order.menu_id}} <br>
+        reservation id : {{selected_order.reservation_id}} <br>
+
+        Menu : {{menu.menu_name}} <br>
+        Price : {{ "$%.2f"|format(menu.menu_price) }} <br>
+
+        <form action="/update_order/{{selected_order.id}}" method='POST'>
+          <select name="reservation_id" id="" class="form-control w-100 mb-3" required>
+            {% for r in reservation %}
+              <option value="{{r.id}}">{{r.res_date}}, time: {{r.res_time}}, guest: {{r.num_guest}}</option>
+            {% endfor %}
+          </select>
+          <!-- two options that flask get the specific menu id from form -->
+          <!-- #1 use input type="hidden", hide the menu id as part of your form. but we need to creat new route. -->
+          <!-- <input type="hidden" name="menu_id" value=" jinja selected_menu.id" jinja > -->
+          <!-- #2 put jinja selected_menu.id" jinja next to order route in form action-->
+          <input type="submit" name="order" class="btn w-100 btn-primary" value="Order">
+        </form>
+      </div>
+
+  </div>
+{% endblock %}

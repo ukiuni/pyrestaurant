@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>DashBoard</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/dashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/add_menu">Menu</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/users">Users</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/reservations">Reservations</a>
+        <a class="btn btn-outline-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+    <div class="text-end m-3">
+      <p>Welcome {{user.uname}}.</p>
+    </div>
+
+    <h2 class="text-center mt-3 mb-0 pb-0">Dashboard</h2>
+    <p class="text-center">Here you can see the all user's information and edit website.</p>
+    <div class="mx-5">
+      <div class="row text-center">
+        <div class="col-sm-3">
+          <div class="card h-100">
+            <div class="card-header p-0">
+              <img src="{{url_for('static', filename='images/categories.jpeg')}}" align="middle" class="w-100"/>
+            </div>
+            <div class="card-body mb-0">
+              <h5 class="card-title">Category [{{current_category|length}}]</h5>
+
+              <p class="card-text">You can add and edit categories for menu.</p>
+              <a href="/categories" class="btn btn-primary w-100">Categories</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card h-100">
+            <div class="card-header p-0">
+              <img src="{{url_for('static', filename='images/menu.jpeg')}}" align="middle" class="w-100"/>
+            </div>
+            <div class="card-body mb-0">
+              <h5 class="card-title">Menu [{{current_menu|length}}]</h5>
+              <p class="card-text">You can add and edit menu foods and price.</p>
+              <a href="/add_menu" class="btn btn-primary w-100">Menu</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card h-100">
+            <div class="card-header p-0">
+              <img src="{{url_for('static', filename='images/users.jpeg')}}" align="middle" class="w-100"/>
+            </div>
+            <div class="card-body mb-0">
+              <h5 class="card-title">Users</h5>
+              <p class="card-text">You can see and edit the user's information.</p>
+              <a href="/users" class="btn btn-primary w-100">Users</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card h-100">
+            <div class="card-header p-0">
+              <img src="{{url_for('static', filename='images/reservations.jpeg')}}" align="middle" class="w-100"/>
+            </div>
+            <div class="card-body mb-0">
+              <h5 class="card-title">Reservations</h5>
+              <p class="card-text">You can see and edit all reservated information.</p>
+              <a href="/reservations" class="btn btn-primary w-100">Reservations</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

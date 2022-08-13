@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Reservation Details</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/dashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/add_menu">Menu</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/users">Users</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/reservations">Reservations</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+
+    <div class="container-fluid text-center">
+      <h3 class="text-center my-3 pb-0">Reservation Details</h3>
+      <div class="card w-25 mx-auto mb-3">
+        <div class="card-body">
+          User Name : {{user.uname}} <br>
+          Date : {{selected_res.res_date}} <br>
+          Time : {{selected_res.res_time}} <br>
+          Guest : {{selected_res.num_guest}}
+        </div>
+      </div>
+
+      {% if details|length < 1 %}
+        <h3 class="text-danger text-center">Zero records in table</h3>
+      {% else%}
+        <table class="table table-striped table-bordered w-75 mx-auto">
+          <tr>
+            <th class="table-danger">Order ID #</th>
+            <th class="table-danger">Picture</th>
+            <th class="table-danger">Menu</th>
+            <th class="table-danger">Price</th>
+            <th colspan="2" class="table-danger">Action</th>
+    
+            {% for d in details %}
+              <tr>
+                <td>{{d.Order.id}}</td>
+                <td style="width: 200px; height: 200px;"><img src="/static/images/{{d.menu_pic}}" alt="" class="w-100 h-100"></td>
+                <td>{{d.menu_name}}</td>
+                <td>{{ "$%.2f"|format(d.menu_price) }}</td>
+                <td><a href="/update_res_order/{{d.Order.id}}">Update</a></td>
+                <td><a href="/delete_res_order/{{d.Order.id}}">Delete</a></td>
+              </tr>
+            {% endfor %}
+          </tr>
+        </table>
+      {% endif %}      
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>DashBoard</title>
+{% endblock title %}
+
+{% block body %}
+  <div class="container-fluid mb-3">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 bg-light border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Py Restaurant</span>
+      </a>
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/userdashboard">Home</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="reservation">Reservation</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/account">Create Account</a>
+        <a class="btn btn-primary text-decoration-none" href="{{ url_for('logout') }}">Logout</a>
+      </nav>
+    </div>
+    <div class="text-end m-3">
+      <p>Welcome {{user.uname}}.</p>
+    </div>
+
+    <h2 class="text-center mt-3 mb-0 pb-0">Dashboard</h2>
+    <p class="text-center">Here you can reserve tables and order menu.</p>
+    <div class="mx-5">
+      <div class="row justify-content-center text-center">
+        <div class="col-sm-3">
+          <div class="card h-100">
+            <div class="card-header p-0">
+              <img src="{{url_for('static', filename='images/reservations.jpeg')}}" align="middle" class="w-100"/>
+            </div>
+            <div class="card-body mb-0">
+              <h5 class="card-title">Reservation</h5>
+              <p class="card-text">At first you can reserve your table here.</p>
+              <a href="/reservation" class="btn btn-primary w-100">Reservation</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card h-100">
+            <div class="card-header p-0">
+              <img src="{{url_for('static', filename='images/menu.jpeg')}}" align="middle" class="w-100"/>
+            </div>
+            <div class="card-body mb-0">
+              <h5 class="card-title">Order Food</h5>
+              <p class="card-text">After reserve the table, you can order your food.</p>
+              <a href="/select_category" class="btn btn-primary w-100">Order food</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

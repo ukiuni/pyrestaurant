@@ -1,6 +1,6 @@
 # this is where you write the code to create tables and columns.
 from time import time
-from database import db
+from ..database import db
 from datetime import date, datetime
 
 class Account(db.Model):

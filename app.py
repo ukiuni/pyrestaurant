@@ -1,9 +1,6 @@
 from flask import Flask
-from .database import init_db
-from .config import Config
-from . import models
-# what is this session? I can run without this command
-from flask_session import Session
+from database import init_db
+from config import Config
 
 def create_app():
     # creation of Object/instance of class Flask. this app is object for my flask class

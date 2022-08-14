@@ -1,10 +1,10 @@
 # these 2 imports below i didnt write
 from crypt import methods
 from re import A
-from .database import db
-from .app import app
+from database import db
+from app import app
 from flask import Flask, redirect, render_template, request, redirect, session, url_for
-from .models import Account, Login, Reservation, Category, Menu, Order
+from models.models import Account, Login, Reservation, Category, Menu, Order
 import os
 import datetime
 

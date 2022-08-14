@@ -1,6 +1,6 @@
 from flask import Flask
-from .database import init_db
-from .config import Config
+from database import init_db
+from config import Config
 
 def create_app():
     # creation of Object/instance of class Flask. this app is object for my flask class
@@ -17,3 +17,5 @@ def create_app():
 
 # main app code. this app is just local variable
 app = create_app()
+
+from views import app as apptemp
